@@ -1,1 +1,30 @@
-# technical-papers
+# How does a browser render HTML, CSS, JS to DOM? What is the mechanism behind it? 
+
+
+The mechanism behind the pixalisation of HTML, CSS and JS codes is called Critical Rendering Path (CRP). It's a process where browser collects codes from the HTML, CSS and JS files and merges them into the rendering tree. Although this process isn't necessarily always sequential, but the baseline implementation flows in that order. 
+
+
+Let's breakdown the the rendering (CRP) process into step for easy explanation. When the browser receives the HTML, CSS and JS files from the network, it process them into the following sequence:
+
+
+HTML to DOM: The browser reads the raw bites from the HTML file and converts them into characters based on encoding method such as UTF-8. Then it converts those characters into W3C standards tokens like <head>, <body> etc. Then tokens are converted into object with their rules and properties. Finally, the browser strcture these nodes into a tree hierarchy. This is our DOM.
+
+
+CSS to CSSOM: While parsing the HTML file, the browser encounters the CSS file through <link> or <style> tag. It pauses the HTML parsing (or performs in parallel) and follows pretty much the same process as the DOM. It goes like raw bites > characters > tokens > objects > CSSOM
+
+
+JS: When browser encounters <script> tag, it pause the HTML rendering and loads the script, and passes it to browser's JS engine (V8 in Chrom, SpiderMonkey in FireFox). Since JS script can affect DOM and CSSOM, it is given priority to read the correct style and object model. Once its done, browser resumes DOM construction where it left off. 
+
+
+Integeration: Once the DOM, CSSOM and JS are done procession, the browser turns everything into a rendering tree. The rendering tree only contains the nodes which finally have to be visible on the screen. For example, it excludes elements with display:none and includes elements with display:hidden properties.
+
+
+Layout and Formatting: The browser calculates the size and position for each element according to the screen size.
+
+
+Painting: The browsers uses graphic engine (like Skia in Chrom) to convert the elements into bitmap and shows the final frame on the screen.
+
+
+
+
+
