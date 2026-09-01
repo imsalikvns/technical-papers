@@ -1,4 +1,4 @@
-# How does a browser render HTML, CSS, JS to DOM? What is the mechanism behind it?
+# How Does a Browser Renders HTML, CSS, JS to DOM? What Is the Mechanism Behind it?
 
 The mechanism behind the pixalisation of HTML, CSS and JS codes is called **Critical Rendering Path (CRP)**. It's a process where browser collects codes from the HTML, CSS and JS files and merges them into the rendering tree. Although this process isn't necessarily always sequential, but the baseline implementation flows in that order.
 
@@ -49,7 +49,7 @@ The browser calculates the size and position for each element according to the s
 
 The browsers uses graphic engine (like Skia in Chrom) to convert the elements into bitmap and shows the final frame on the screen.
 
-# Refernces
+# References
 
 - Link: https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path
 - Link: https://developer.chrome.com/docs/web-platform/blink
