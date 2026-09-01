@@ -1,16 +1,16 @@
-# How Does a Browser Renders HTML, CSS, JS to DOM? What Is the Mechanism Behind It?
+# How Does a Browser Render HTML, CSS, and JS to the DOM? What Is the Mechanism Behind It?
 
-The mechanism behind parsing HTML, CSS, and JS is called the **Critical Rendering Path (CRP)**. It's a process where the browser collects code from HTML, CSS, and JS files and merges it into the rendering tree. Although this process isn't necessarily always sequential, but the baseline implementation flows in that order.
+The mechanism behind parsing HTML, CSS, and JS is called the **Critical Rendering Path (CRP)**. It's a process where the browser collects code from HTML, CSS, and JS files and merges it into the rendering tree. Although this process isn't necessarily always sequential, the baseline implementation flows in that order.
 
 Let's break down the rendering (CRP) process into steps for easy explanation. When the browser receives the HTML, CSS, and JS files from the network, it processes them into the following sequence:
 
 ## 1. HTML to DOM
 
 ### 1.1
-The browser reads the raw bites from the HTML file and converts them into characters based on encoding method such as UTF-8.
+The browser reads the raw bytes from the HTML file and converts them into characters based on an encoding method such as UTF-8.
 
 ### 1.2
-It converts those characters into W3C standards tokens like `<head>`, `<body>` etc.
+It converts those characters into W3C standard tokens like `<head>`, `<body>` etc.
 
 ### 1.3
 The tokens are converted into objects with their rules and properties.
@@ -29,7 +29,7 @@ It goes like raw bits> characters > tokens > objects > CSSOM.
 ## 3. JS
 
 ### 3.1
-When browser encounters `<script>` tag, it pause the HTML rendering and loads the script, and passes it to browser's JS engine (V8 in Chrom, SpiderMonkey in FireFox).
+When the browser encounters `<script>` tag, it pauses the HTML rendering and loads the script, and passes it to the browser's JS engine (V8 in Chrome, SpiderMonkey in Firefox).
 
 ### 3.2
 Since a JS script can affect the DOM and CSSOM, it is given priority to read the correct style and object model.
